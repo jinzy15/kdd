@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="f9705d17-2851-46db-8d6d-72a32a409c62" name="jason" url="http://jason@jthu.ddns.net">
+        <fileTransfer host="jason@jthu.ddns.net" port="21782" rootFolder="/home/jason" accessType="SFTP" username="jason">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21782" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
