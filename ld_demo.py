@@ -6,7 +6,7 @@ from sklearn.externals import joblib
 ##parameters
 #we need to constru more factor
 
-factor = ['PM2.5','PM10','NO2','CO','O3','SO2']
+factor = ['PM2.5','PM10','NO2']
 train_start_date = '2017-01-01'
 train_end_date = '2017-09-01'
 test_start_date = '2017-09-01'
@@ -31,9 +31,11 @@ def smape(actual, predicted):
 
 regr = LinearRegression()
 
-mydata = DataSet.DataSet('data/beijing_17_18_aq.csv')
+mydata = DataSet.DataSet('data/london_aq.csv')
 all_ids = mydata.get_all_ids()
+print(all_ids)
 for item in all_ids:
+	print(item)
 	temp_train = mydata.get_data(item,train_start_date,train_end_date)
 	temp_test =  mydata.get_data(item,test_start_date,test_end_date)
 
@@ -41,14 +43,15 @@ for item in all_ids:
 	temp_train = temp_train.fillna(method = 'ffill')
 	temp_train= temp_test.fillna(method = 'bfill')
 	temp_train = temp_train[factor]
-	print(np.isnan(temp_train).any())
-	print(temp_train.isnull().any())
-	print(np.isfinite(temp_train).all())
+	# print(np.isnan(temp_train).any())
+	# print(temp_train.isnull().any())
+	# print(np.isfinite(temp_train).all())
 
 # train
 
 	X,Y =  set_to_XY(temp_train)
-# import ipdb;ipdb.set_trace()
+
+	# import ipdb;ipdb.set_trace()
 	try:
 		regr = regr.fit(X, Y)
 	except:
@@ -57,11 +60,10 @@ for item in all_ids:
 # test
 	temp_test= temp_test.fillna(method = 'ffill')
 	temp_test= temp_test.fillna(method = 'bfill')
-
 	temp_test = temp_test[factor]
-	print(np.isnan(temp_test).any())
-	print(temp_test.isnull().any())
-	print(np.isfinite(temp_test).all())
+	# print(np.isnan(temp_test).any())
+	# print(temp_test.isnull().any())
+	# print(np.isfinite(temp_test).all())
 	X,Y =  set_to_XY(temp_test)
 	try:
 		predict = regr.predict(X)

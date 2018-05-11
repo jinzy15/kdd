@@ -3,7 +3,7 @@ import numpy as np
 class DataSet(object):
     def __init__(self, file_path):
         self.df = pd.read_csv(file_path)
-        self.grouped = self.df.groupby(self.df.iloc[:,0])
+        self.grouped = self.df.groupby(self.df.station_id)
         self.dict= dict(list(self.grouped))
     def get_data(self,idname,start_date,end_date=None):
         if(type(idname) ==list):
