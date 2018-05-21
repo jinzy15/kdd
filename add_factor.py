@@ -35,7 +35,6 @@ def get_another_factors(file_path, Match_Dict, Mode):  #Mode 0 基于历史数�
                 for i in range(4, 7):
                     data_list.append(s1[i])
                 another_factor[key] = data_list    
-                break
     factor_list = sorted(another_factor.items())
     factors = {}
     for item in factor_list:
